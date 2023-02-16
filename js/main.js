@@ -1,13 +1,15 @@
-const controle = document.querySelectorAll('.controle-ajuste');
+const controle = document.querySelectorAll("[data-controle]");
 
 controle.forEach((element) => {
-    element.addEventListener('click', (event) => handleData(event.target.textContent));
+    element.addEventListener('click', (event) => handleData(event.target.dataset.controle, event.target.parentNode));
 })
 
-function handleData(operacao) {
+function handleData(operacao, controle) {
+    const peca = controle.querySelector('.controle-contador');
+
     if (operacao === "-") {
-        braco.value = parseInt(braco.value) - 1;
+        peca.value = parseInt(peca.value) - 1;
     } else {
-        braco.value = parseInt(braco.value) + 1
+        peca.value = parseInt(peca.value) + 1
     }
 }
